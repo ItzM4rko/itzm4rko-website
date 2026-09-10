@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ItzM4rko — Tartalomkészítő</title>
+<meta name="description" content="ItzM4rko — Minecraft videók, élő közvetítések YouTube-on és TikTokon, valamint a Wra1thSMP közösségi szerver. Csatlakozz a Discordhoz!">
+
+<!-- Open Graph / közösségi megosztás -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="ItzM4rko — Tartalomkészítő">
+<meta property="og:description" content="Minecraft videók, élő közvetítések és a Wra1thSMP közösség. Csatlakozz a Discordhoz!">
+<meta property="og:image" content="https://itzm4rko.hu/og-image.png">
+<meta property="og:url" content="https://itzm4rko.hu">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ItzM4rko — Tartalomkészítő">
+<meta name="twitter:description" content="Minecraft videók, élő közvetítések és a Wra1thSMP közösség. Csatlakozz a Discordhoz!">
+<meta name="twitter:image" content="https://itzm4rko.hu/og-image.png">
+
+<link rel="icon" type="image/png" href="/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f3f1ea;
+    --bg-panel: #ffffff;
+    --text: #191a16;
+    --text-soft: #4d4f47;
+    --border: #191a16;
+    --grass: #4f7d3a;
+    --grass-dark: #395c29;
+    --amber: #d9922f;
+    --shadow: rgba(25,26,22,0.18);
+  }
+  html[data-theme="dark"]{
+    --bg: #12140f;
+    --bg-panel: #1b1d16;
+    --text: #ece9dd;
+    --text-soft: #b3b09f;
+    --border: #ece9dd;
+    --grass: #7fb862;
+    --grass-dark: #5c8f45;
+    --amber: #e8ab4f;
+    --shadow: rgba(0,0,0,0.5);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    transition: background-color 0.25s ease, color 0.25s ease;
+    line-height: 1.55;
+  }
+  .brand{
+    font-family: 'Silkscreen', monospace;
+    letter-spacing: 0.5px;
+  }
+  h1, h2{
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  a{ color: inherit; }
+  img{ max-width:100%; display:block; }
+
+  .wrap{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* status banner */
+  .status-banner{
+    background: var(--grass-dark);
+    color: #f4f1e6;
+    font-size: 13px;
+    text-align: center;
+    padding: 9px 12px;
+    border-bottom: 3px solid var(--border);
+    display: block;
+    text-decoration: none;
+  }
+  .status-banner:hover{ text-decoration: underline; }
+
+  /* header */
+  header.hero{
+    padding: 56px 0 40px;
+    position: relative;
+  }
+  .top-row{
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  .brand{ font-size: 15px; }
+  #theme-toggle{
+    background: var(--bg-panel);
+    border: 2px solid var(--border);
+    color: var(--text);
+    width: 42px;
+    height: 42px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 3px 3px 0 var(--shadow);
+    transition: transform 0.15s ease;
+  }
+  #theme-toggle:hover{ transform: translate(-1px,-1px); }
+  #theme-toggle:active{ transform: translate(1px,1px); box-shadow: 1px 1px 0 var(--shadow); }
+
+  #theme-toggle:focus-visible,
+  .link-card:focus-visible,
+  .btn-amber:focus-visible,
+  .copy-btn:focus-visible{
+    outline: 3px solid var(--amber);
+    outline-offset: 2px;
+  }
+
+  h1{
+    font-size: clamp(32px, 6vw, 52px);
+    margin: 0 0 18px;
+    line-height: 1.1;
+  }
+  .tagline{
+    max-width: 46ch;
+    color: var(--text-soft);
+    font-size: 16px;
+  }
+
+  /* links */
+  .links-label{
+    font-size: 13px;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin: 0 0 14px;
+    letter-spacing: 1px;
+  }
+  .link-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .link-card{
+    display:block;
+    background: var(--bg-panel);
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    padding: 16px 18px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 4px 4px 0 var(--shadow);
+    transition: transform 0.15s ease;
+  }
+  .link-card:hover{ transform: translate(-2px,-2px); }
+  .link-card small{
+    display:block;
+    font-weight: 500;
+    color: var(--text-soft);
+    margin-top: 4px;
+  }
+
+  .server-strip{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    gap: 12px;
+    background: var(--grass);
+    color: #10230b;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 26px 0 60px;
+    font-weight: 700;
+    flex-wrap: wrap;
+  }
+  html[data-theme="dark"] .server-strip{ color: #0c1509; }
+  .copy-btn{
+    background: var(--bg-panel);
+    color: var(--text);
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .copy-btn:hover{ transform: translate(-1px,-1px); }
+
+  /* about */
+  section.about{ padding: 20px 0 56px; border-top: 3px solid var(--border); }
+  section.about h2{ font-size: 22px; margin-bottom: 20px; }
+  section.about p{ color: var(--text-soft); max-width: 62ch; margin: 0 0 16px; }
+  section.about p:last-child{ margin-bottom:0; }
+
+  /* discord cta */
+  section.cta{
+    text-align:left;
+    background: var(--bg-panel);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 32px;
+    margin-bottom: 56px;
+    box-shadow: 5px 5px 0 var(--shadow);
+  }
+  section.cta h2{ margin: 0 0 10px; font-size: 20px; }
+  section.cta p{ color: var(--text-soft); margin: 0 0 20px; max-width: 55ch; }
+  .btn-amber{
+    display:inline-block;
+    background: var(--amber);
+    color: #201400;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 22px;
+    font-weight: 800;
+    text-decoration:none;
+    box-shadow: 3px 3px 0 var(--shadow);
+  }
+  .btn-amber:hover{ transform: translate(-1px,-1px); }
+
+  footer{
+    border-top: 3px solid var(--border);
+    padding: 24px 0 40px;
+    font-size: 13px;
+    color: var(--text-soft);
+  }
+
+  @media (max-width: 480px){
+    .server-strip{ flex-direction:column; align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+
+  <a class="status-banner" id="status-banner" href="https://www.tiktok.com/@th3m4rko" target="_blank" rel="noopener">KÖVESS A TIKTOKON, HOGY ELSŐKÉNT TUDJ, HA ÉLŐBEN MEGYEK →</a>
+
+  <div class="wrap">
+    <header class="hero">
+      <div class="top-row">
+        <button id="theme-toggle" aria-label="Sötét/világos mód váltása">🌙</button>
+      </div>
+      <h1>ItzM4rko</h1>
+      <p class="tagline">Videók, élő közvetítések és egy hely, ahol a közösségem összegyűlik. YouTube-on és TikTokon készítek tartalmat, a Discordon mindig nyitva az ajtó, a Wra1thSMP-n pedig együtt Minecraftozunk.</p>
+    </header>
+
+    <p class="links-label">Hol találsz meg</p>
+    <div class="link-grid">
+      <a class="link-card" href="https://www.youtube.com/@itzm4rko" target="_blank" rel="noopener">YouTube <small>@itzm4rko →</small></a>
+      <a class="link-card" href="https://www.tiktok.com/@th3m4rko" target="_blank" rel="noopener">TikTok <small>@th3m4rko →</small></a>
+      <a class="link-card" href="https://www.instagram.com/itzm4rko/" target="_blank" rel="noopener">Instagram <small>@itzm4rko →</small></a>
+    </div>
+
+    <div class="server-strip">
+      <span>Wra1thSMP</span>
+      <span id="server-ip">wra1thsmp.mcsh.io</span>
+      <button class="copy-btn" id="copy-ip-btn" type="button" aria-label="Szerver cím másolása">
+        <svg id="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="8" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </button>
+    </div>
+
+    <section class="about" id="rolam">
+      <h2>Rólam</h2>
+      <p>Kb. 6 éve Minecraftozok, és talán most jutottam el arra a pontra, hogy ezt meg is osszam veletek. Sword LT5, LT4 és csak így tovább – legyen szó SMP-ről, Mace-ről vagy bármilyen más PvP-ről.</p>
+      <p>Mindig megpróbálom a lehető legtöbbet kihozni mindenből, és folyamatosan fejlődni. A Wra1thSMP-n főként a közösséggel foglalkozom, YouTube-on és TikTokon pedig ebből készítek tartalmakat.</p>
+    </section>
+
+    <section class="cta">
+      <h2>Gyere a Discordra</h2>
+      <p>Itt beszélgetünk a következő videókról, itt jelentem be, ha élőben megyek, és itt van a legaktívabb közösség.</p>
+      <a class="btn-amber" href="https://discord.gg/5R4HVN2sg" target="_blank" rel="noopener">Csatlakozom →</a>
+    </section>
+
+    <footer>© 2026 ItzM4rko — Saját kézzel készült</footer>
+  </div>
+
+<script>
+  (function(){
+    const root = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initial = stored || (prefersDark ? 'dark' : 'light');
+    setTheme(initial);
+
+    btn.addEventListener('click', function(){
+      const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    function setTheme(mode){
+      root.setAttribute('data-theme', mode);
+      localStorage.setItem('theme', mode);
+      btn.textContent = mode === 'dark' ? '☀️' : '🌙';
+      btn.setAttribute('aria-pressed', mode === 'dark' ? 'true' : 'false');
+    }
+  })();
+
+  (function(){
+    const copyBtn = document.getElementById('copy-ip-btn');
+    const ipText = document.getElementById('server-ip').textContent.trim();
+
+    const copyIconSVG = copyBtn.innerHTML;
+    const checkIconSVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+    function showSuccess(){
+      copyBtn.innerHTML = checkIconSVG;
+      setTimeout(function(){ copyBtn.innerHTML = copyIconSVG; }, 1500);
+    }
+
+    function fallbackCopy(text){
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      try{
+        document.execCommand('copy');
+        showSuccess();
+      }catch(err){
+        console.error('Copy failed:', err);
+      }
+      document.body.removeChild(textarea);
+    }
+
+    copyBtn.addEventListener('click', function(){
+      if (navigator.clipboard && window.isSecureContext){
+        navigator.clipboard.writeText(ipText).then(showSuccess).catch(function(){
+          fallbackCopy(ipText);
+        });
+      } else {
+        fallbackCopy(ipText);
+      }
+    });
+  })();
+</script>
+</body>
+</html>
